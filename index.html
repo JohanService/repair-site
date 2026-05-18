@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Repair Status</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        body {
+            font-family: Arial;
+            padding: 30px;
+            background: #f4f4f4;
+        }
+
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 400px;
+            margin: auto;
+        }
+
+        h1 {
+            margin-top: 0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <h1>Repair Status</h1>
+
+    <p><strong>Repair ID:</strong> <span id="repairID"></span></p>
+    <p><strong>Machine:</strong> <span id="machine"></span></p>
+    <p><strong>Status:</strong> <span id="status"></span></p>
+    <p><strong>Technician:</strong> <span id="technician"></span></p>
+</div>
+
+<script>
+
+const params = new URLSearchParams(window.location.search);
+const repairID = params.get("id");
+
+document.getElementById("repairID").innerText = repairID;
+
+fetch("https://defaultcbe65d6b391c4ac2abeeb3ec20e050.7c.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/bb6a6b4417b649a6a185b93f9826abb9/triggers/manual/paths/invoke?api-version=1", {
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+        repairID: repairID
+    })
+})
+.then(response => response.json())
+.then(data => {
+
+    document.getElementById("machine").innerText = data.machine;
+    document.getElementById("status").innerText = data.status;
+    document.getElementById("technician").innerText = data.technician;
+
+});
+
+</script>
+
+</body>
+</html>
