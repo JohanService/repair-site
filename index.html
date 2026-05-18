@@ -42,7 +42,7 @@ const repairID = params.get("id");
 
 document.getElementById("repairID").innerText = repairID;
 
-fetch("https://defaultcbe65d6b391c4ac2abeeb3ec20e050.7c.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/bb6a6b4417b649a6a185b93f9826abb9/triggers/manual/paths/invoke?api-version=1", {
+fetch("https://defaultcbe65d6b391c4ac2abeeb3ec20e050.7c.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/bb6a6b4417b649a6a185b93f9826abb9/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=UMxaStoy8RCdg7JKWTPsl9YEHaIPL54bMZLoczm1fwk", {
     method: "POST",
     headers: {
         "Content-Type": "application/json"
