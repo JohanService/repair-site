@@ -13,28 +13,29 @@
 
         .card {
             background: white;
-            padding: 25px;
             border-radius: 12px;
             max-width: 420px;
             margin: auto;
             box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        /* FULL WIDTH LOGO */
+        .logo-banner {
+            width: 100%;
+            height: 140px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .content {
+            padding: 20px;
         }
 
         h1 {
             font-size: 20px;
-            margin: 0;
-        }
-
-        .header {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-
-        .logo {
-            height: 40px;
-            width: auto;
+            margin: 0 0 15px 0;
+            text-align: center;
         }
 
         .field {
@@ -44,39 +45,57 @@
         .label {
             font-weight: bold;
         }
+
+        .footer {
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+            font-size: 12px;
+            color: #666;
+            text-align: center;
+            line-height: 1.4;
+        }
     </style>
 </head>
+
 <body>
 
 <div class="card">
 
-    <!-- HEADER -->
-    <div style="display:flex; align-items:center; gap:10px; margin-bottom:15px;">
-        <img src="SMS Logo.jpeg" style="height:40px;">
-        <h1 style="font-size:20px; margin:0;">Repair Status</h1>
-    </div>
+    <!-- FULL WIDTH LOGO -->
+    <img src="SMS Logo.jpeg" class="logo-banner" alt="SMS Logo">
 
     <!-- CONTENT -->
-    <div class="field">
-        <span class="label">Repair ID:</span>
-        <span id="repairID"></span>
-    </div>
+    <div class="content">
 
-    <div class="field">
-        <span class="label">Machine:</span>
-        <span id="machine"></span>
-    </div>
+        <h1>Repair Status</h1>
 
-    <div class="field">
-        <span class="label">Status:</span>
-        <span id="status"></span>
-    </div>
+        <div class="field">
+            <span class="label">Repair ID:</span>
+            <span id="repairID"></span>
+        </div>
 
-    <div class="field">
-        <span class="label">Technician:</span>
-        <span id="technician"></span>
-    </div>
+        <div class="field">
+            <span class="label">Machine:</span>
+            <span id="machine"></span>
+        </div>
 
+        <div class="field">
+            <span class="label">Status:</span>
+            <span id="status"></span>
+        </div>
+
+        <div class="field">
+            <span class="label">Technician:</span>
+            <span id="technician"></span>
+        </div>
+
+        <!-- FOOTER MESSAGE -->
+        <div class="footer">
+            Please contact the service department for any further enquiries.
+        </div>
+
+    </div>
 </div>
 
 <script>
