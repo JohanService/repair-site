@@ -54,9 +54,10 @@ fetch("https://defaultcbe65d6b391c4ac2abeeb3ec20e050.7c.environment.api.powerpla
 .then(response => response.json())
 .then(data => {
 
-    document.getElementById("machine").innerText = data.machine;
-    document.getElementById("status").innerText = data.status;
-    document.getElementById("technician").innerText = data.technician;
+    document.getElementById("repairID").innerText = data.repairID;
+    document.getElementById("machine").innerText = data.machinetype || "N/A";
+    document.getElementById("status").innerText = data.status || "N/A";
+    document.getElementById("technician").innerText = data.technician || "N/A";
 
 });
 
