@@ -30,7 +30,7 @@
     <h1>Repair Status</h1>
 
     <p><strong>Repair ID:</strong> <span id="repairID"></span></p>
-    <p><strong>Machine:</strong> <span id="machinetype"></span></p>
+    <p><strong>Machine:</strong> <span id="machine"></span></p>
     <p><strong>Status:</strong> <span id="status"></span></p>
     <p><strong>Technician:</strong> <span id="technician"></span></p>
 </div>
@@ -55,7 +55,7 @@ fetch("https://defaultcbe65d6b391c4ac2abeeb3ec20e050.7c.environment.api.powerpla
 .then(data => {
 
     document.getElementById("repairID").innerText = data.repairID;
-    document.getElementById("machine").innerText = data.machinetype || "N/A";
+    document.getElementById("machine").innerText = data.machineType || "N/A";
     document.getElementById("status").innerText = data.status || "N/A";
     document.getElementById("technician").innerText = data.technician || "N/A";
 
