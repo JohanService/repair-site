@@ -13,26 +13,70 @@
 
         .card {
             background: white;
-            padding: 20px;
-            border-radius: 10px;
-            max-width: 400px;
+            padding: 25px;
+            border-radius: 12px;
+            max-width: 420px;
             margin: auto;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
 
         h1 {
-            margin-top: 0;
+            font-size: 20px;
+            margin: 0;
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .logo {
+            height: 40px;
+            width: auto;
+        }
+
+        .field {
+            margin-bottom: 10px;
+        }
+
+        .label {
+            font-weight: bold;
         }
     </style>
 </head>
 <body>
 
 <div class="card">
-    <h1>Repair Status</h1>
 
-    <p><strong>Repair ID:</strong> <span id="repairID"></span></p>
-    <p><strong>Machine:</strong> <span id="machine"></span></p>
-    <p><strong>Status:</strong> <span id="status"></span></p>
-    <p><strong>Technician:</strong> <span id="technician"></span></p>
+    <!-- HEADER -->
+    <div class="header">
+        <img src="YOUR_LOGO_URL_HERE" class="logo" alt="SMS Logo">
+        <h1>Repair Status</h1>
+    </div>
+
+    <!-- CONTENT -->
+    <div class="field">
+        <span class="label">Repair ID:</span>
+        <span id="repairID"></span>
+    </div>
+
+    <div class="field">
+        <span class="label">Machine:</span>
+        <span id="machine"></span>
+    </div>
+
+    <div class="field">
+        <span class="label">Status:</span>
+        <span id="status"></span>
+    </div>
+
+    <div class="field">
+        <span class="label">Technician:</span>
+        <span id="technician"></span>
+    </div>
+
 </div>
 
 <script>
@@ -54,7 +98,7 @@ fetch("https://defaultcbe65d6b391c4ac2abeeb3ec20e050.7c.environment.api.powerpla
 .then(response => response.json())
 .then(data => {
 
-    document.getElementById("repairID").innerText = data.repairID;
+    document.getElementById("repairID").innerText = data.repairID || "N/A";
     document.getElementById("machine").innerText = data.machineType || "N/A";
     document.getElementById("status").innerText = data.status || "N/A";
     document.getElementById("technician").innerText = data.technician || "N/A";
