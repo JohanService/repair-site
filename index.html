@@ -163,7 +163,7 @@ fetch("https://defaultcbe65d6b391c4ac2abeeb3ec20e050.7c.environment.api.powerpla
     console.log("API RESPONSE:", data);
 
     // CHECK IF TAG IS ACTIVE
-    if (data.active === true) {
+    if (data.active == true || data.active == "true" || data.active == "Yes") {
 
         // SHOW REPAIR CONTENT
         document.getElementById("repairContent").style.display = "block";
