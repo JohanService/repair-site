@@ -71,7 +71,10 @@
     <!-- CONTENT -->
     <div class="content">
 
-        <h1>Repair Status</h1>
+    <h1>Repair Status</h1>
+
+    <!-- ACTIVE REPAIR CONTENT -->
+    <div id="repairContent">
 
         <div class="field">
             <span class="label">Repair ID:</span>
@@ -84,6 +87,16 @@
         </div>
 
         <div class="field">
+            <span class="label">Serial Number:</span>
+            <span id="serialNumber"></span>
+        </div>
+
+        <div class="field">
+            <span class="label">Client Name:</span>
+            <span id="clientName"></span>
+        </div>
+
+        <div class="field">
             <span class="label">Status:</span>
             <span id="status"></span>
         </div>
@@ -93,12 +106,39 @@
             <span id="technician"></span>
         </div>
 
-        <!-- FOOTER MESSAGE -->
-        <div class="footer">
-            Please contact the service department for any further enquiries.
+        <div class="field">
+            <span class="label">Last Updated:</span>
+            <span id="lastUpdatedTime"></span>
+        </div>
+
+        <div class="field">
+            <span class="label">Notes:</span>
+            <span id="notes"></span>
         </div>
 
     </div>
+
+    <!-- INACTIVE MESSAGE -->
+    <div id="inactiveMessage" style="display:none; text-align:center; padding:20px;">
+
+        <h2>Repair Tag Not Assigned</h2>
+
+        <p>
+            This Repair Tag has not been assigned.
+        </p>
+
+        <p>
+            Use the Service-IT Mobile App to assign an Equipment.
+        </p>
+
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer">
+        Please contact the service department for any further enquiries.
+    </div>
+
+</div>
 </div>
 
 <script>
@@ -120,10 +160,36 @@ fetch("https://defaultcbe65d6b391c4ac2abeeb3ec20e050.7c.environment.api.powerpla
 .then(response => response.json())
 .then(data => {
 
-    document.getElementById("repairID").innerText = data.repairID || "N/A";
-    document.getElementById("machine").innerText = data.machineType || "N/A";
-    document.getElementById("status").innerText = data.status || "N/A";
-    document.getElementById("technician").innerText = data.technician || "N/A";
+    console.log("API RESPONSE:", data);
+
+    // CHECK IF TAG IS ACTIVE
+    if (data.active === true) {
+
+        // SHOW REPAIR CONTENT
+        document.getElementById("repairContent").style.display = "block";
+
+        // HIDE INACTIVE MESSAGE
+        document.getElementById("inactiveMessage").style.display = "none";
+
+        // POPULATE DATA
+        document.getElementById("repairID").innerText = data.repairID || "N/A";
+        document.getElementById("machine").innerText = data.machineType || "N/A";
+        document.getElementById("serialNumber").innerText = data.serialNumber || "N/A";
+        document.getElementById("clientName").innerText = data.clientName || "N/A";
+        document.getElementById("status").innerText = data.status || "N/A";
+        document.getElementById("technician").innerText = data.technician || "N/A";
+        document.getElementById("lastUpdatedTime").innerText = data.lastUpdatedTime || "N/A";
+        document.getElementById("notes").innerText = data.notes || "N/A";
+
+    } else {
+
+        // HIDE REPAIR CONTENT
+        document.getElementById("repairContent").style.display = "none";
+
+        // SHOW INACTIVE MESSAGE
+        document.getElementById("inactiveMessage").style.display = "block";
+
+    }
 
 });
 
